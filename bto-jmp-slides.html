@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Public housing allocation</title>
+<meta name="author" content="(Kwok-Hao Lee  (export-snippet (:back-end html :value <br><br> :begin 14 :end 32 :post-blank 1 :parent #0)) (with Andrew Ferdowsian and Luther Yap))"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///Users/kwokhao/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="file:///Users/kwokhao/reveal.js/dist/theme/metropolis.css" id="theme"/>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="./figures/jmp/53pipitroad.jpg" data-background-opacity="0.2"><h1 class="title">Public housing allocation</h1><p class="subtitle">(Policy design vs. construction)</p>
+<h2 class="author">Kwok-Hao Lee <br><br> (with Andrew Ferdowsian and Luther Yap)</h2><p class="date">Created: 2022-05-27 Fri 17:50</p>
+</section>
+
+<section>
+<section id="slide-org954e6e1" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h2 id="org954e6e1"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb5de408" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgb5de408"><span class="section-number-3">1.1.</span> Motivation</h3>
+<p>
+We study the <b>design</b> of a <b>large-scale public housing program</b>
+</p>
+<ul>
+<li>Covering 80% of residents in a developed country</li>
+<li>Similar to those in major European and Asian cities</li>
+
+</ul>
+
+<p>
+Because of limited land and funding, housing assistance is rationed.
+</p>
+
+<ol>
+<li class="fragment fade-in-then-semi-out">The government <b>builds</b> (public) housing</li>
+<li class="fragment fade-in-then-semi-out">sold <b>below market prices</b>
+<ul>
+<li><b>possibly resold</b> on a regulated aftermarket</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">rationed by <b>quarterly lottery</b> over each applicant's top choice</li>
+<li class="fragment fade-in-then-semi-out">to achieve <b>social objectives</b></li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfa0c4ac" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgfa0c4ac"><span class="section-number-3">1.2.</span> Research questions</h3>
+<div style="float:left; font-size: 95%">
+<ol>
+<li class="fragment fade-in">What are the effects of <b>changing allocation rules</b> for public housing,
+vis-à-vis <b>building slightly more</b>?
+<ul>
+<li class="fragment fade-in-then-semi-out"><span style="color:#bbbbbb;">"&#x2026; we need to <mark>manage the
+building programme carefully</mark>, including
+<mark>allocating new flats in a fair, cost-effective and efficient
+way</mark>."</span> (Mah 2011, 29)</li>
+
+</ul></li>
+<li class="fragment fade-in">What are the impacts on <b>wait times</b> and <b>prices on the aftermarket</b>?
+<ul>
+<li class="fragment fade-in-then-semi-out"><span style="color:#bbbbbb;">"By 2014&#x2026; first-time homeowners
+were counseled publicly to&#x2026; <mark>wait for the new
+supply</mark>&#x2026; Levies&#x2026; <mark>deter[ed] property
+investments</mark>."</span> (Chua 2017, 92&#x2013;93)</li>
+
+</ul></li>
+
+</ol>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org98929cc" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org98929cc"><span class="section-number-3">1.3.</span> Agenda</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">Introduce the setting and provide descriptive analysis</li>
+<li class="fragment fade-in-then-semi-out">Build dynamic structural model of (new) public housing allocation
+<ul>
+<li>Young households observe developments, then choose: apply to one, wait, or
+buy off 2\(^{\circ} \) market
+<ul>
+<li>Choice depends on preferences, lottery odds and 2\(^{\circ} \) market
+prices</li>
+
+</ul></li>
+<li>2\(^{\circ} \) apartment owners observe prices, then decide whether to sell</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Estimate on novel data from the Singaporean mechanism
+<ul>
+<li>Estimate dynamic demand (NFXP-GMM) and 2\(^{\circ} \) market supply (Euler
+CCP)</li>
+<li>Key challenge: endogenous lottery odds and 2\(^{\circ} \) market prices</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Evaluate how well the government can do&#x2026;
+<ul>
+<li>by changing the rules of the game?</li>
+<li>by building a little more?</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga6275b2" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orga6275b2"><span class="section-number-3">1.4.</span> Preview of results</h3>
+<div class="column" style="float:left; width: 15%">
+
+<div id="org67bc9d3" class="figure">
+<p><img src="./figures/jmp/bto-flats-research-question-slide.png" alt="bto-flats-research-question-slide.png" />
+</p>
+</div>
+</div><div class="column" style="float:right; width: 83%; font-size: 80%">
+<p>
+ 1. <b>What are the effects of <span class="underline">changing allocation rules</span> for public housing&#x2026;</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">Changing rules <b>generates spillovers in other markets</b></li>
+<li class="fragment fade-in-then-semi-out">Key <b>trade-off</b>: \[ \text{Apartment vacancies} \leftrightarrow \text{Young
+  household welfare} \leftrightarrow \text{Owner-occupier home equity} \]</li>
+<li class="fragment fade-in-then-semi-out">A strategyproof mechanism <b>reduces vacancies (12% \( \to \) 7%)</b> but
+<b>advantages existing homeowners</b>
+<ul>
+<li>Rich households wait 23% less; poor 8% less</li>
+<li>Demand drives up prices on the secondary market (&gt;15%)</li>
+<li>Only <b>justified by strong preference for efficiency over redistribution</b></li>
+
+</ul></li>
+
+</ul>
+<p>
+ 2. <b>&#x2026; vis-à-vis <span class="underline">building slightly more (10%)</span>?</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out"><b>Choosing to wait longer</b> can be <b>rational</b> (but <b>selfish!</b>)
+<ul>
+<li>Developments are differentiated by location</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Expanding supply <b>raises vacancies (12% \( \to \) 16%)</b>
+<ul>
+<li>Agents apply for desirable developments, but welfare largely unchanged</li>
+<li>Rich wait 3% less (1.3 weeks); no change for poor</li>
+<li>Existing homeowners virtually unharmed</li>
+
+</ul></li>
+
+</ul>
+</div>
+
+</section>
+<section id="slide-org8e307d1" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org8e307d1">Contributions</h4>
+<ol>
+<li class="fragment fade-in-then-semi-out">First to <b>evaluate market design and subsidy changes</b> against a <b>supply
+increase</b>, reminiscent of Bulow and Klemperer (1996)</li>
+<li class="fragment fade-in-then-semi-out">Captures <b>dynamic tradeoffs</b> between waiting and applying in public housing
+choice</li>
+<li class="fragment fade-in-then-semi-out">Combines <b>endogenous "success probabilities"</b> and <b>equilibrium prices</b> on the
+secondary market</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org194eb60" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h2 id="org194eb60"><span class="section-number-2">2.</span> Setting</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb745f5b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgb745f5b"><span class="section-number-3">2.1.</span> Historical context</h3>
+<p>
+<span class="underline"><b>80%</b></span> of Singaporean households live in government housing
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">2021: 1.1m apartments, est. value S$440b</li>
+
+</ul>
+<p>
+<span class="underline"><b>Build-to-order (BTO)</b></span> mechanism, new government apartments (2001-today)
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">S$6.3b/year (US$4.7b/year)</li>
+<li class="fragment fade-in-then-semi-out">Administered by the Housing and Development Board (HDB, 1960-today)
+<ul>
+<li>"Sells" <i>99-year leases</i> to households assigned new apartments</li>
+<li>Intermediates resale on (after)market</li>
+
+</ul></li>
+
+</ul>
+<p>
+<span class="underline"><b>Government objective</b></span>: Provide "affordable, quality public housing option"
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">Encourage homeownership</li>
+<li class="fragment fade-in-then-semi-out">"Affordable": \( \leq \) 4x applicant yearly income</li>
+<li class="fragment fade-in-then-semi-out">Minimize vacancies</li>
+<li class="fragment fade-in-then-semi-out">Ensure economic and racial integration, family formation&#x2026;</li>
+
+</ul>
+<p>
+&#x2026; Not estimated in this paper (see Ferdowsian, Lee and Yap 2022)
+</p>
+
+</section>
+<section id="slide-org30d53f7" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org30d53f7">Eligibility for the mechanism</h4>
+<p>
+Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">One must be a Singapore citizen; the other a citizen/PR</li>
+<li class="fragment fade-in-then-semi-out">Both aged \( \geq \) 21 years</li>
+<li class="fragment fade-in-then-semi-out">Do not own real estate in Singapore or overseas</li>
+<li class="fragment fade-in-then-semi-out">Income \( \leq \) S$144,000 a year</li>
+
+</ul>
+
+<p>
+<b>Priority</b>: Focus on "first-timers."
+</p>
+<ul>
+<li>95% of apartments in desirable neighborhoods reserved for them</li>
+
+</ul>
+
+</section>
+<section id="slide-orge11903b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orge11903b">Subsidies and apartment types</h4>
+<ul>
+<li class="fragment fade-in-then-semi-out"><span class="underline"><b>Unit of analysis</b></span>: Housing <span class="underline">development</span>, (location, size) pair</li>
+<li class="fragment fade-in-then-semi-out"><span class="underline"><b>Subsidies</b></span>
+<ul>
+<li><i>Explicit</i>: "Discount" on apartment conditional on income</li>
+<li><i>Implicit</i>: "Sticker price" &lt; Price of comparable resale units</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><span class="underline"><b>Apartment types</b></span>
+<ul>
+<li><i>3(4)-room</i>: 2(3) bedrooms, 1 living room</li>
+<li><i>5-room</i>: 3 bedrooms, 1 living room, 1 dining room</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org177514f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org177514f">Historical context (comparison)</h4>
+<div style="font-size: 90%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Characteristic/Settings</b></th>
+<th scope="col" class="org-left"><b>Singapore</b> (+ Israel, Brazil, &#x2026;)</th>
+<th scope="col" class="org-left"><b>United States</b> (e.g. NYCHA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><i>Lease type</i></td>
+<td class="org-left">Owner-occupation</td>
+<td class="org-left">Rental</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>Lease tenure</i></td>
+<td class="org-left">\( \geq \) 99 years</td>
+<td class="org-left">1-2 years</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>Lease transferable?</i></td>
+<td class="org-left">Yes, after min term (SGP, ISR: 5 yrs)</td>
+<td class="org-left">No</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><i>Applicant wealth</i></td>
+<td class="org-left">Low to moderate</td>
+<td class="org-left">Low</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>Transfer type</i></td>
+<td class="org-left">Income-specific subsidy +</td>
+<td class="org-left">Direct rent control/</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Discount from "resale price"</td>
+<td class="org-left">Voucher (for rent &gt; 40% AGI)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><i>Allocation mechanism</i></td>
+<td class="org-left">Centralized assignment, lottery</td>
+<td class="org-left">Waitlist</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>Application cycles</i></td>
+<td class="org-left">Periodic (SGP: Quarterly)</td>
+<td class="org-left">Continuous (FIFO)</td>
+</tr>
+
+<tr>
+<td class="org-left"><i># Choices per app</i></td>
+<td class="org-left">1</td>
+<td class="org-left">&gt; 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org605b196" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org605b196"><span class="section-number-3">2.2.</span> The Singaporean housing market</h3>
+
+<div id="orgf0cf532" class="figure">
+<p><img src="./figures/jmp/singapore-housing-market.png" alt="singapore-housing-market.png" width="100%" height="100%" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2cb603b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org2cb603b">Within a period&#x2026;</h4>
+
+<div id="orged3d39d" class="figure">
+<p><img src="./figures/jmp/btoApplicationFlowchart.png" alt="btoApplicationFlowchart.png" width="100%" height="100%" />
+</p>
+</div>
+
+<ul>
+<li>Cannot participate if I already have a house</li>
+
+</ul>
+
+</section>
+<section id="slide-org3eb02ea" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org3eb02ea"></h4>
+
+<div id="orgcdfeaa8" class="figure">
+<p><img src="./figures/jmp/ng-2021-bto-delays-title.png" alt="ng-2021-bto-delays-title.png" width="80%" height="80%" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgd8b34cd" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgd8b34cd"></h4>
+<p>
+<span class="underline">Housing affordable for the poor?</span>
+</p>
+
+<div id="org071938a" class="figure">
+<p><img src="./figures/jmp/2018-HDB-SHS-valueformoney-labeled.png" alt="2018-HDB-SHS-valueformoney-labeled.png" width="90%" height="90%" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5b7777e" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org5b7777e"><span class="section-number-3">2.3.</span> Descriptive analysis</h3>
+<ol>
+<li class="fragment fade-in-then-semi-out">Apartments relatively homogeneous <i>within a development</i></li>
+<li class="fragment fade-in-then-semi-out"><b><a href="#/slide-org374d3a0">Households responsive to eligibility/subsidies</a></b>, but not on marriage margin</li>
+<li class="fragment fade-in-then-semi-out">The vast majority of young couples <a href="#/slide-orgb6a0bcc">live with their parents</a></li>
+<li class="fragment fade-in-then-semi-out">Sticker prices are set <b><a href="#/slide-orgd7e690a">based on observable amenities</a></b></li>
+<li class="fragment fade-in-then-semi-out">To households, access to schools and public transit seem to matter
+<ul>
+<li>But are <a href="#/slide-org71be671">not congested</a></li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><a href="#/slide-orge0a9648">Government apartments <b>enter the housing stock slowly</b></a></li>
+<li class="fragment fade-in-then-semi-out">Most applicants <a href="#/slide-orgc1a3db8"><b>matched within 3 quarters</b></a></li>
+
+</ol>
+
+</section>
+<section id="slide-orgf4ebff6" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgf4ebff6">Location of BTO developments</h4>
+
+<div id="orgac8d073" class="figure">
+<p><img src="./figures/jmp/bto_map.png" alt="bto_map.png" />
+</p>
+</div>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+<section id="slide-orgd7e690a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgd7e690a">Sticker prices are set based on observables</h4>
+
+<div id="org28a4223" class="figure">
+<p><img src="./figures/jmp/bto-sticker-price-determinants.png" alt="bto-sticker-price-determinants.png" />
+</p>
+</div>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+</section>
+<section id="slide-orgb6a0bcc" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgb6a0bcc">Young couples live with their parents</h4>
+<ul>
+<li>2015: <a href="https://www.todayonline.com/big-read/big-read-short-young-single-and-living-away-parents">Only 24k Singaporeans aged 21-35 "living alone or away from parents"</a>
+<ul>
+<li>In our setting: max 1k renting households, much lower than 15k
+waiting/unmatched per period</li>
+
+</ul></li>
+
+</ul>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+<section id="slide-org71be671" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org71be671">Congestion of amenities is unlikely</h4>
+
+<div id="org0390e96" class="figure">
+<p><img src="./figures/jmp/p1_vacancies_overall.png" alt="p1_vacancies_overall.png" />
+</p>
+</div>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+<section id="slide-orgc1a3db8" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgc1a3db8">Most applicants are matched within 3 quarters</h4>
+<p>
+Written answer by the Ministry for National Development:
+</p>
+<ul>
+<li><span style="color:#bbbbbb;">"Between 2019 and 3Q2020, the
+<mark>mean number of attempts</mark> by [successful]
+first-timer families was <mark>1.3</mark>, and the mode and
+median&#x2026; were both 1."</span> (July 27, 2021)</li>
+
+</ul>
+
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+<section id="slide-orge0a9648" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orge0a9648">Government apartments enter the housing stock slowly</h4>
+
+<div id="org1c4f3e1" class="figure">
+<p><img src="./figures/jmp/hdbHousingStockChangeOverTime.svg" alt="hdbHousingStockChangeOverTime.svg" class="org-svg" />
+</p>
+</div>
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+<section id="slide-org374d3a0" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org374d3a0">Applicants respond to changing eligibility and subsidies</h4>
+
+<div id="org5a92db6" class="figure">
+<p><img src="./figures/jmp/applicationRatesJulia.svg" alt="applicationRatesJulia.svg" class="org-svg" />
+</p>
+</div>
+
+<div style="font-size: 70%;">
+<ul>
+<li>Income ceiling \( $120k \rightarrow $144k \)</li>
+<li>4-room apartments in non-mature estates eligible for "full subsidies"</li>
+
+</ul>
+</div>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+<section id="slide-org8b5c991" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org8b5c991">Are tomorrow's BTO quantities predictive of today's resale prices?</h4>
+<pre class="example" id="org72d4ff1">
+			Fixed Effect Model
+===================================================================
+Number of obs:               143   Degrees of freedom:           10
+R2:                        0.970   R2 Adjusted:               0.968
+F-Stat:                  22.2922   p-value:                   0.000
+R2 within:                 0.572   Iterations:                    1
+===================================================================
+p_mean   | Estimate Std.Error  t value Pr(&gt;|t|) Lower 95% Upper 95%
+-------------------------------------------------------------------
+Q_tot    |  5.35086   4.09878  1.30548    0.194  -2.75637   13.4581
+Q_tot_b1 |  12.1578   3.91939  3.10197    0.002   4.40542   19.9102
+Q_tot_b2 |  13.8998   3.93991  3.52795    0.001   6.10679   21.6928
+Q_tot_b3 |  15.1357   3.94968  3.83212    0.000   7.32336    22.948
+Q_tot_f1 |  4.71945   3.49805  1.34917    0.180  -2.19956   11.6385
+Q_tot_f2 |  3.33006   3.13656  1.06169    0.290  -2.87393   9.53404
+Q_tot_f3 |  1.81114   2.81271 0.643912    0.521   -3.7523   7.37457
+===================================================================
+</pre>
+
+<p>
+Homeowners on the aftermarket may have limited foresight
+</p>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+<section id="slide-orgf0bb36f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgf0bb36f">Are tomorrow's BTO quantities predictive of today's resale quantities?</h4>
+<pre class="example" id="orgfc16ab0">
+			  Fixed Effect Model
+=======================================================================
+Number of obs:                 143   Degrees of freedom:             10
+R2:                          0.343   R2 Adjusted:                 0.299
+F-Stat:                    2.21645   p-value:                     0.045
+R2 within:                   0.162   Iterations:                      1
+=======================================================================
+q_resale |   Estimate Std.Error   t value Pr(&gt;|t|)  Lower 95% Upper 95%
+-----------------------------------------------------------------------
+Q_tot    |  -0.125728  0.130241 -0.965355    0.336  -0.383339  0.131882
+Q_tot_b1 | -0.0748124  0.130137 -0.574875    0.566  -0.332218  0.182593
+Q_tot_b2 |  0.0632109  0.149432  0.423009    0.673  -0.232359  0.358781
+Q_tot_b3 |   0.154947   0.13045   1.18778    0.237  -0.103079  0.412973
+Q_tot_f1 |   0.341434   0.18544   1.84121    0.068 -0.0253593  0.708227
+Q_tot_f2 |   0.230135  0.139992   1.64392    0.103 -0.0467629  0.507034
+Q_tot_f3 |  -0.206265  0.120096  -1.71751    0.088  -0.443809 0.0312796
+=======================================================================
+</pre>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org5b7777e">(BACK TO DESCRIPTIVE ANALYSIS)</a>
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc38bf33" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h2 id="orgc38bf33"><span class="section-number-2">3.</span> Model</h2>
+<p>
+Needed to predict equilibrium effects of rule changes and added supply.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org6f05b99" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org6f05b99"><span class="section-number-3">3.1.</span> <span class="underline">Dynamic equilibrium</span> model of housing choice</h3>
+<p>
+<b>Young households</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">Poor and rich, finitely-lived, perfect foresight</li>
+<li class="fragment fade-in-then-semi-out">In each period, given prefs, prices and odds of success over developments,
+either
+<ol>
+<li>Apply for one development within the mechanism;</li>
+<li>Wait (live with family); or</li>
+<li>Buy a house on the secondary market (<b>terminal</b>)</li>
+
+</ol></li>
+<li class="fragment fade-in-then-semi-out">Key trade-off: Success odds vs. desirability</li>
+
+</ul>
+
+<p>
+<b>Existing owner-occupiers</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">Infinite horizon, perfect foresight</li>
+<li class="fragment fade-in-then-semi-out">In each period, given the prices they face, either
+<ol>
+<li>Sell off their apartment (<b>terminal</b>); or</li>
+<li>Continue living in it</li>
+
+</ol></li>
+<li class="fragment fade-in-then-semi-out">Key trade-off: Sell today vs. sell at higher price tomorrow</li>
+
+</ul>
+
+</section>
+<section id="slide-org0416bcf" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org0416bcf"></h4>
+<p>
+<b>Endogenous objects</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">In each period, the income and age composition of the searchers</li>
+<li class="fragment fade-in-then-semi-out">At each development, the probability that a searcher succeeds</li>
+<li class="fragment fade-in-then-semi-out">On the aftermarket, the mean sale price</li>
+<li class="fragment fade-in-then-semi-out">For each new apartment, its 5-year-ahead resale price</li>
+
+</ul>
+
+<p>
+<b>Frictions</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">"Sticker prices" below static market clearing level</li>
+<li class="fragment fade-in-then-semi-out">Rational delay, leading to vacancies</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org7304433" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org7304433"><span class="section-number-3">3.2.</span> Model &#x2014; Demand (Timing)</h3>
+
+<div id="org4f6f7b9" class="figure">
+<p><img src="./figures/jmp/btoApplicationFlowchart.png" alt="btoApplicationFlowchart.png" width="100%" height="100%" />
+</p>
+</div>
+
+<p>
+Cannot participate if I already own a house.
+</p>
+
+<div style="font-size:50%;">
+<p>
+(Details below&#x2026;)
+</p>
+</div>
+
+</section>
+<section id="slide-org7d9422f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org7d9422f">Model: Demand timing details</h4>
+<p>
+Every quarter \( t = 0,1,2,\ldots \)
+</p>
+
+<ol>
+<li>Households \( i=1,2,\ldots,I_t \) are born</li>
+<li>All living households observe the neighborhoods \( l \) and apartment sizes
+\( j \) on offer in that period: \[ \mathcal{A}_t \triangleq \{(j, l): (j, l)
+   \text{ on offer via BTO in period } t\} \] \[ \mathcal{A}^R_t \triangleq \{(j,
+   l): (j, l) \text{ on offer via resale market in period } t\} \]</li>
+<li>Each household chooses a development \( a \in \mathcal{A}_t \cup
+   \mathcal{A}^R_t \) to apply for, or wait: \( a = W \)</li>
+<li>If a household purchases a resale flat, it gets its apartment for sure. Else
+it learns if it is matched via the BTO process.</li>
+<li>Time advances to period \( t+1 \).</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc384280" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgc384280"><span class="section-number-3">3.3.</span> Model &#x2014; Demand (Preferences)</h3>
+<p>
+Every period, a fixed number of poor and rich agents (800:3200) become active in
+the mechanism.
+</p>
+
+<p>
+Specify model backwards.
+</p>
+
+</section>
+<section id="slide-org9f1880a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org9f1880a"><span class="underline">Terminal payoffs</span></h4>
+<p>
+<span class="underline">Utility of matched households</span>
+</p>
+<ul>
+<li>BTO apartment \( a \): \[ u_{iat} = {x_{at}}'\beta_i - \alpha_i p_{at} +
+  \alpha_i^R p^R_{at} + \xi_{at} \]</li>
+<li>Apartment on secondary market: \[ u^E_{it} = -\alpha_i \bar p^S_t + \xi^E_t \]</li>
+
+</ul>
+
+<p>
+<span class="underline">Flow utility of unmatched households</span>
+</p>
+<ul>
+<li>If unmatched/waiting, pay waiting cost (utils: \( c_i \))</li>
+
+</ul>
+
+</section>
+<section id="slide-orga73984f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orga73984f"><span class="underline">Conditional value functions</span></h4>
+<ul>
+<li>BTO apartment \( a \): \[ v_{iat} = q_{at} u_{iat} + (1-q_{at})[-c_i + \delta
+  V_{it+1}] + \epsilon_{iat} \]</li>
+<li>Apartment on secondary market: \[ v^E_{it} = u^E_{it} + \epsilon^E_{it} \]</li>
+
+</ul>
+
+</section>
+<section id="slide-org360914b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org360914b"><span class="underline">Household decision problem</span></h4>
+<ul>
+<li>If unmatched, decides optimally: \[ V_{it} = \max_d v_{idt} \]</li>
+<li>Possible actions:
+<ul>
+<li>\( d \in \mathcal{A}_t \): apply to BTO apartment \( d \)</li>
+<li>\( d = E \): take apartment on secondary market</li>
+<li>\( d = W \): wait one period, i.e. obtain indirect utility \[-c_i +
+    \xi_{Wt} + \delta V_{it+1} \]</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgb3156eb" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgb3156eb"><span class="underline">Transition rules</span></h4>
+<div style="text-align:center;">
+<p>
+<b>BTO applicants to apartment \( a \)</b>
+</p>
+
+<div class="column" style="float:left; width: 50%">
+<p>
+\( \stackrel{(q_{at})}{\swarrow} \)
+</p>
+
+<p>
+<b>Matched</b> to \( a \)
+</p>
+</div><div class="column" style="float:right; width: 50%">
+<p>
+\( \stackrel{(1-q_{at})}{\searrow} \)
+</p>
+
+<p>
+<b>Unmatched</b>
+</p>
+</div></div>
+
+</section>
+<section id="slide-orgb3156eb-split" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+
+<div style="text-align:center;">
+<div class="column" style="float:left; width: 50%">
+<p>
+<b>Households taking non-BTO apartment</b>
+</p>
+
+<p>
+\( \downarrow \)
+</p>
+
+<p>
+<b>Exit the mechanism</b>
+</p>
+</div><div class="column" style="float:right; width: 50%">
+<p>
+<b>Waiting households</b>
+</p>
+
+<p>
+\( \downarrow \)
+</p>
+
+<p>
+<b>Waiting</b>, remain unmatched next period
+</p>
+</div></div>
+
+</section>
+<section id="slide-orgecd8783" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgecd8783"><span class="underline">Market shares</span></h4>
+<ul>
+<li>Market share of BTO apartment \( a \) at time \( t \): \[ s_{at} = M_t^{-1}
+  \int \frac{\exp(\bar v_{iat})}{\exp(\bar v_{it}^E) + \exp(\bar v^W_{it}) +
+  \sum_{j \in \mathcal{A}_t} \exp(\bar v_{ijt})} \, d\mu_t \]
+<ul>
+<li>Market size \( M_t \triangleq \int \, d\mu_t  \)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orge2a8342" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orge2a8342"><span class="section-number-3">3.4.</span> Model &#x2014; Supply</h3>
+<ul>
+<li>Assume the PHA's development locations and quantities are fixed.</li>
+<li>To close the model, we need to specify the (dynamic) apartment supply decision
+for owner-occupier \( i \) in an apartment of size \( l \) at time \( t \).
+<ul>
+<li class="fragment fade-in-then-semi-out">If she sells, she exits the game</li>
+<li class="fragment fade-in-then-semi-out">If she doesn't sell, she continues to the next period</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgd84274a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgd84274a"><span class="underline">Secondary market supply equations</span></h4>
+<ul>
+<li>Every quarter: owner-occupier decides whether to sell off her apartment</li>
+<li>Indirect utility from selling is \[ w_{i1t|l} = \rho_0 \bar p^S_{t|l} +
+  x_{1t|l}'\rho_1 + \xi_{1t|l} + \epsilon_{i1t|l} \]</li>
+<li>Indirect utility from staying is \[ w_{i0t|l} = \delta^o
+  \mathbb{E}V^o_{it+1|l} + \xi_{0t|l} + \epsilon_{i0t|l} \]</li>
+
+</ul>
+
+</section>
+<section id="slide-orga1281f4" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orga1281f4"><span class="underline">Secondary market shares</span></h4>
+<p>
+Market share of sellers of size \( l \) at time \( t \) is \[ s_{1t|l}(\bar
+p^S_{t|l}) = \frac{\exp(\bar w_{1t|l}(\bar p^S_{t|l}))}{\exp(\bar w_{0t|l}(\bar
+p^S_{t|l})) + \exp(\bar w_{1t|l}(\bar p^S_{t|l}))} \]
+</p>
+
+<p>
+Supply of secondary market housing is \[ S(\vec{p}^S_t) = \int s_{1t|l}(\bar
+p^S_{t|l}) \, d\lambda_t(l), \] where \( \lambda_t(l) \) is the housing stock of
+type \( l \) apartments at time \( t \).
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbf90f5f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgbf90f5f"><span class="section-number-3">3.5.</span> Model &#x2014; Equilibrium</h3>
+<p>
+In equilibrium,
+</p>
+<ol>
+<li class="fragment fade-in-then-semi-out">[Young households apply/wait/exit optimally]</li>
+<li class="fragment fade-in-then-semi-out">[Owner-occupiers sell/remain optimally]</li>
+<li class="fragment fade-in-then-semi-out">[Success probabilities in the mechanism are consistent]</li>
+<li class="fragment fade-in-then-semi-out">[Secondary market prices set demand equal to supply]</li>
+
+</ol>
+
+</section>
+<section id="slide-orgaefc9ba" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgaefc9ba">Formal statement of equilibrium</h4>
+<p>
+An <b>equilibrium</b> is a set of type-specific application probabilities \( s_{iat}
+\); secondary market shares \( s^R_{it} \); success probabilities \( q(\cdot,
+\mu_t) \); and secondary market prices \( \bar p^S_t \) such that
+</p>
+<div style="font-size:80%;">
+<ol>
+<li class="fragment fade-in-then-semi-out">[Household optimization] Given success probabilities and resale prices,
+application probabilities maximize household utility</li>
+<li class="fragment fade-in-then-semi-out">[Secondary market clearing] The prevailing prices clear the market for
+secondary apartments, i.e. \[ M_t s^E_t = S(\vec{p}^S_t) \quad \forall \, t
+   \]</li>
+<li class="fragment fade-in-then-semi-out">[Consistency of success probabilities] Given application probabilities and
+resale prices, success probabilities are consistent, i.e. \[\hat q_{at} =
+   \min \left\{\frac{Q_{at}}{s_{at}(q_t, p^R_t) M_t(q_t, p^R_t)}, 1\right\}.\]</li>
+<li class="fragment fade-in-then-semi-out">[Consistency of resale price beliefs] Beliefs about forward resale prices
+are consistent with the realized path of prices on the secondary market.</li>
+
+</ol>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf23ae80" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h2 id="orgf23ae80"><span class="section-number-2">4.</span> Estimation</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org85d8852" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org85d8852"><span class="section-number-3">4.1.</span> Data and where we are headed</h3>
+<p>
+Want to recover&#x2026;
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">young household preferences and wait costs (demand) and</li>
+<li class="fragment fade-in-then-semi-out">how likely existing homeowners are to move when their home prices change
+(supply).</li>
+
+</ul>
+
+<p>
+&#x2026; with <b>novel Singaporean data</b> covering the <b>universe of public housing
+transactions</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">Mechanism (scraped): 195 developments over 20 periods (2012-2015)
+<ul>
+<li>Application rates, prices and quantities and nearby amenities</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Secondary market (data.gov.sg): 570,000 transactions over 20 years (2000-2020)
+<ul>
+<li>Month/year transacted, location, price, year built</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0608524" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org0608524"><span class="section-number-3">4.2.</span> Demand estimation: Outline</h3>
+<p>
+<b>Young household preferences</b> recovered via GMM (e.g. Gowrisankaran and Rysman 2012)
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Agent types</span>: Poor/rich, 20%/80% of entrants
+<ul>
+<li>Poor: First-married h/h with secondary education or less</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Heterogeneity of preferences</span>: In price sensitivities \( \alpha^y \) and wait
+costs \( c^y \)</li>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Market size</span>: 3-year rolling window of first-married resident h/h
+<ul>
+<li>Initialize at 16,000</li>
+<li>About 800 poor, 3,200 rich enter each period</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Share of exiters</span>: 30% of resale market volume</li>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Discount factor</span>: \( \delta = 0.96 \) annually</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf7bd7b4" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgf7bd7b4"><span class="section-number-3">4.3.</span> Demand estimation: Endogeneity and identification</h3>
+<p>
+Prices and market shares endogenous to unobserved development quality.
+</p>
+<ul>
+<li>Unobserved local amenities</li>
+<li>Unobserved building amenities</li>
+
+</ul>
+
+<p>
+<b>Instruments</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Cost shifters</span>: E.g. price of granite x apartment size</li>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Supply shock</span> in January 2013: Higher stamp duties</li>
+<li class="fragment fade-in-then-semi-out"><span class="underline"><a href="#/slide-org75a53be">Differentiation IVs</a></span> (Gandhi and Houde 2021)</li>
+
+</ul>
+
+<p>
+<b>Identifying variation</b>
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Taste for development characteristics</span>: Within a period/across time,
+developments vary in observables and market shares
+<ul>
+<li>Poor also face different prices from rich (explicit subsidies)</li>
+<li>Identifies <a href="#/slide-org3121a89">type-specific coefficients</a> in indirect utilities</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Wait costs</span>: Across periods, applicants face different choice sets
+<ul>
+<li>Not all neighborhoods are available each period</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org75a53be" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org75a53be">Computing Differentiation IVs</h4>
+<ol>
+<li>Predict endogenous prices
+<ul>
+<li>Flexible specification of instruments and exogenous variables</li>
+
+</ul></li>
+<li>For each characteristic \( k \) that is either exogenous or a predicted
+price,
+<ul>
+<li class="fragment fade-in-then-semi-out">Compute the <b>isolation</b> of development \( a \) in \( k \): \[ z_{at, kk}
+     \triangleq \sum_{a' \in \mathcal{A}_t; a' \neq a} (x_{at, k} - x_{a't,
+     k})^2; \]</li>
+<li class="fragment fade-in-then-semi-out">With another such characteristic \( k' \), their <b>interaction</b>: \[
+     z_{at,kk'} \triangleq \sum_{a' \in \mathcal{A}_t; a' \neq a} (x_{at, k} -
+     x_{a't, k})(x_{at, k'} - x_{a't, k'}).\]</li>
+
+</ul></li>
+
+</ol>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-orgf7bd7b4">(BACK TO IDENTIFICATION)</a>
+</p>
+</div>
+</section>
+<section id="slide-orge345291" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orge345291">Instrument validity</h4>
+<ul>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Exogeneity</span>
+<ol>
+<li>(Cost shifters + policy shock) Plausibly uncorrelated with unobserved
+amenities</li>
+<li>(DIV) Need \( \mathbb{E}[\xi_{at}|(x_{at, k} - x_{a't, k})^2_{a'}, z_{at}]
+     = 0 \).</li>
+
+</ol></li>
+<li class="fragment fade-in-then-semi-out"><span class="underline">Relevance</span>: <a href="#/slide-org06304ac">Strong "first stage"</a>.
+<ul>
+<li>To \( s_{at} \): Shifting \( x_{-at} \) mechanically shifts \( s_{at} \)</li>
+<li>To \( p_{at} \): Government passes higher costs of construction to
+households</li>
+<li>To \( p^S_{at} \): Policy shock discourages holding two properties, so
+lowers \( p^S_{at} \)</li>
+
+</ul></li>
+
+</ul>
+
+<div style="font-size: 50%;">
+<p>
+(In progress: Sargan-Hansen (1982) test for instrument strength)
+</p>
+</div>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-orgf7bd7b4">(BACK TO IDENTIFICATION)</a>
+</p>
+</div>
+</section>
+<section id="slide-org06304ac" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org06304ac">First stage is strong</h4>
+<p>
+When regressing on instruments:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Variable</th>
+<th scope="col" class="org-right">F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Market shares</td>
+<td class="org-right">20.42</td>
+</tr>
+
+<tr>
+<td class="org-left">Sticker price</td>
+<td class="org-right">153.19</td>
+</tr>
+
+<tr>
+<td class="org-left">Forward resale price</td>
+<td class="org-right">85.89</td>
+</tr>
+</tbody>
+</table>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-orgf7bd7b4">(BACK TO IDENTIFICATION)</a>
+</p>
+</div>
+</section>
+<section id="slide-org3121a89" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org3121a89">Example illustrating identification of latent price/wait cost coefficients</h4>
+<p>
+Focus on static model with two income types (H/L), one product per period and
+outside option. Indirect utilities are \[ \bar u^y_{1t} = \alpha_0^y -
+\alpha_1^y p_t^y + \xi_t, \] and \( \bar u^y_{0t} = 0. \)
+</p>
+<ul>
+<li>Fix \( \mu_t(L) \equiv 0.2 \), \( \alpha^y > 0. \)</li>
+<li>Suppose in some period \( t \), \( s_{1t} \) is high.</li>
+<li>Perform comparative statics: \( p^L_t = 0 \); \( {p^L_t}' = p^H_t > 0 \).
+<ul>
+<li>To rationalize observed applicant behavior, if \( \xi_t \) fixed, either
+poor households less price sensitive \( (|\alpha^L_1|) \downarrow \), or
+rich households less price sensitive \( (|\alpha^H_1|) \downarrow \), or
+both</li>
+
+</ul></li>
+
+</ul>
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-orgf7bd7b4">(BACK TO IDENTIFICATION)</a>
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org86e74ed" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org86e74ed"><span class="section-number-3">4.4.</span> Demand estimation: Interpretable results</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>(Dis)Amenity/Value (S$)</b></th>
+<th scope="col" class="org-left"><b>Poor</b></th>
+<th scope="col" class="org-left"><b>Rich</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Living 100m closer to&#x2026;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">\( \quad \)Downtown</td>
+<td class="org-left">400</td>
+<td class="org-left">1,600</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(200)</td>
+<td class="org-left">(400)</td>
+</tr>
+
+<tr>
+<td class="org-left">\( \quad \)Subway Stop</td>
+<td class="org-left">2,100</td>
+<td class="org-left"><mark>8,500</mark></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(1,000)</td>
+<td class="org-left">(2,500)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Wait cost (per person per month)</td>
+<td class="org-left">9,600</td>
+<td class="org-left">50,900</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(5,400)</td>
+<td class="org-left">(18,400)</td>
+</tr>
+</tbody>
+</table>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-orga460086">Other coefficients</a>: distance to SAP school, apartment size, price (by income),
+forward resale price (by income)
+</p>
+</div>
+
+</section>
+<section id="slide-orga460086" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orga460086">Full results</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Parameters</b></th>
+<th scope="col" class="org-left">Estimate</th>
+<th scope="col" class="org-right">S.E.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Constant</td>
+<td class="org-left">-2.698***</td>
+<td class="org-right">1.050</td>
+</tr>
+
+<tr>
+<td class="org-left">Distance to downtown</td>
+<td class="org-left">-0.143***</td>
+<td class="org-right">0.0470</td>
+</tr>
+
+<tr>
+<td class="org-left">Distance to metro stop</td>
+<td class="org-left">-0.729***</td>
+<td class="org-right">0.163</td>
+</tr>
+
+<tr>
+<td class="org-left">Distance to SAP school</td>
+<td class="org-left">0.0291</td>
+<td class="org-right">0.0389</td>
+</tr>
+
+<tr>
+<td class="org-left">4-room flat</td>
+<td class="org-left">1.987***</td>
+<td class="org-right">0.305</td>
+</tr>
+
+<tr>
+<td class="org-left">5-room flat</td>
+<td class="org-left">1.426***</td>
+<td class="org-right">0.499</td>
+</tr>
+
+<tr>
+<td class="org-left">Price</td>
+<td class="org-left">-0.855***</td>
+<td class="org-right">0.291</td>
+</tr>
+
+<tr>
+<td class="org-left">Resale price</td>
+<td class="org-left">0.569**</td>
+<td class="org-right">0.232</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Subsidized development price</td>
+<td class="org-left">-3.433**</td>
+<td class="org-right">1.373</td>
+</tr>
+
+<tr>
+<td class="org-left">Wait cost (Poor)</td>
+<td class="org-left">-1.972***</td>
+<td class="org-right">0.346</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Wait cost (Rich)</td>
+<td class="org-left">-2.611***</td>
+<td class="org-right">0.202</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">N</td>
+<td class="org-left">195</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<div style="font-size: 50%;">
+<p>
+<a href="#/slide-org86e74ed">(BACK TO DEMAND RESULTS)</a>
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb583cd9" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgb583cd9"><span class="section-number-3">4.5.</span> Supply estimation: Outline</h3>
+<p>
+Want to recover <b>how sensitive</b> each household's moving decision is to changes
+in their <b>apartment's price</b>.
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out"><b>IV-FE regression</b> over each (neighborhood, apartment size) pair (Euler CCP;
+Kalouptsidi, Scott and Souza-Rodrigues 2021)
+<ul>
+<li>Avoids repeatedly iterating value functions</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><b>Endogeneity</b>: Price is correlated with unobservables affecting willingness to
+sell</li>
+<li class="fragment fade-in-then-semi-out"><b>Instruments</b>: Demand shocks
+<ul>
+<li>Expansion of eligibility for BTO (2015, 2019)</li>
+<li>Tightening of Loan-to-Value limits (2018)</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><b>Identification</b>: \( \Delta \) market shares and prices by apartment type over
+time</li>
+<li class="fragment fade-in-then-semi-out"><b>Results</b>: Elasticity of 3.64 (se: 1.59)
+<ul>
+<li>Higher than new construction (1.75; Saiz 2010) and housing unit provision
+(0.3; Baum-Snow and Lu 2021)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org497f805" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org497f805"><span class="underline">Supply estimation: Hotz-Miller inversion</span></h4>
+<p>
+By a Hotz-Miller (1993) inversion, the relative attractiveness of selling vs.
+staying is \[ \Delta_{1,0} \ln s_{t|l} = \Delta_{1,0} \bar w_{t|l} = \rho_0 \bar
+p^S_{t|l} + x_{1t|l}'\rho_1 + \Delta_{1,0} \xi_{t|l} - \delta^o
+\mathbb{E}V^o_{t+1|l}.\]
+</p>
+<ul>
+<li>Selling is a terminal action (Arcidiacono and Miller 2011)
+<ul>
+<li>\( \mathbb{E}V^o_{t+1|l} = \gamma^E + \rho_0 \bar p^o_{t+1|l} +
+    x_{1t+1|l}'\rho_1 + \xi_{1t+1|l} - \ln s_{1t+1|l} \)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org6facf15" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org6facf15"><span class="underline">Identification &#x2014; Dynamic Supply</span></h4>
+<div>
+\begin{align*}
+(\Delta_{1,0} \ln s_{t|l}) - \delta^o \ln s_{1t+1|l} &= - \delta^o \gamma^E +
+\rho_0(\bar p^S_{t|l} - \delta^o \bar p^S_{t+1|l}) \\ &+ (x_{1t|l} - \delta^o
+x_{1t+1|l})'\rho_1 + \underbrace{(-\delta^o\xi_{1t+1|l} + \Delta_{1,0} \xi_{t|l})}_{\tilde \xi_{t|l}}
+\end{align*}
+
+</div>
+<ul>
+<li>Mean resale prices \( \bar p^S_{t|l} \) possibly correlated with composite
+unobservable \( \tilde \xi_{t|l} \).
+<ul>
+<li>E.g. Work from home trend: agents in larger apartments less likely to
+vacate, driving prices up but lowering fraction of sellers</li>
+
+</ul></li>
+<li>Instrument with <b>(demand-side) policy shocks</b> in 08/2015, 07/2018 and 08/2019.
+<ul>
+<li>The government unexpectedly
+<ul>
+<li>(2015, 2019) raised subsidies + expanded eligibility for BTO</li>
+<li>(2018) tightened Loan-to-Value limits</li>
+
+</ul></li>
+<li>Plausibly uncorrelated with period unobservable factors that influence the
+probability of sale</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org97ec8d2" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org97ec8d2"><span class="underline">Results &#x2014; Dynamic Supply</span></h4>
+<pre class="example" id="orge7a2eb8">
+res_s = reg(drf, @formula(y ~ (p_adj ~ post2015 + absd2018 + post2019) +
+	    fe(flat_type) + fe(town)), Vcov.robust(), save=:fe)
+
+		     IV Fixed Effect Model
+===============================================================
+Number of obs:            4843   Degrees of freedom:         30
+R2:                     -0.171   R2 Adjusted:            -0.178
+F-Stat:                5.26299   p-value:                 0.022
+F-Stat (First Stage):  11.9648   p-value (First Stage):   0.000
+R2 within:              -0.172   Iterations:                  5
+===============================================================
+y     | Estimate Std.Error t value Pr(&gt;|t|) Lower 95% Upper 95%
+---------------------------------------------------------------
+p_adj | 0.711783  0.310264 2.29412    0.022  0.103524   1.32004
+===============================================================
+</pre>
+
+<p>
+Assume discount factor of 0.96 per year
+</p>
+<ul>
+<li>Mean elasticity: 3.64
+<ul>
+<li>Higher than new construction (1.75; Saiz 2010) and housing unit provision
+(0.3; Baum-Snow and Lu 2021)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc1ab476" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h2 id="orgc1ab476"><span class="section-number-2">5.</span> Counterfactuals</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org681b219" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org681b219"><span class="section-number-3">5.1.</span> Changing the rules of the game</h3>
+<p>
+What happens if we switch to an (infeasible) <b>strategyproof mechanism</b>?
+</p>
+<ol>
+<li class="fragment fade-in-then-semi-out">Guess a price path on the secondary market.</li>
+<li class="fragment fade-in-then-semi-out">Given guess of secondary market prices, all agents truthfully list their
+preferences over (eligible) developments and exiting</li>
+<li class="fragment fade-in-then-semi-out">Designer runs random serial dictatorship over developments and "exiting."</li>
+<li class="fragment fade-in-then-semi-out">If excess demand for secondary market apartments is zero, stop. Else return
+to step 1.</li>
+
+</ol>
+
+</section>
+<section id="slide-orgf71b830" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="orgf71b830">RSD counterfactual results</h4>
+<p>
+We find
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">Vacancies fall (12% \( \to \) 7%)
+<ul>
+<li>Applicants benefit from specifying two developments in the same period</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Wait times fall 20% for rich, but not for poor</li>
+<li class="fragment fade-in-then-semi-out">Prices on the secondary market rise by 15%
+<ul>
+<li>Some applicants now prefer exiting early to failing at a development "late in
+their search."</li>
+
+</ul></li>
+
+</ul>
+
+<p>
+<b>Takeaway</b>: Planner should opt for RSD if she places a high weight on efficiency
+over redistribution (to the young).
+</p>
+
+</section>
+<section id="slide-org8f52b07" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org8f52b07">RSD counterfactual plots</h4>
+
+<div id="org725ac6d" class="figure">
+<p><img src="../make_data/plt_DA_prelim.svg" alt="plt_DA_prelim.svg" class="org-svg" width="100%" height="100%" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org415e6a4" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="org415e6a4"><span class="section-number-3">5.2.</span> Building a little more</h3>
+<p>
+What happens if we build 10% more in oversubscribed developments (\( \geq \) 1
+applicant for 1 apartment)
+</p>
+
+<ul>
+<li class="fragment fade-in-then-semi-out">Expands flow of apartments by 6.8%</li>
+<li class="fragment fade-in-then-semi-out">Prices on the 2\(^{\circ} \) market largely unaffected
+<ul>
+<li>Flow is small relative to stock</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Vacancies rise (12% \( \to \) 16%), esp. in smallest apartments</li>
+<li class="fragment fade-in-then-semi-out">Wait times fall by 3% for rich, but not for poor
+<ul>
+<li>Welfare largely unchanged</li>
+
+</ul></li>
+
+</ul>
+
+<p>
+Two forces at play.
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">On one hand, more agents matched to desirable apartments</li>
+<li class="fragment fade-in-then-semi-out">On the other, agents <b>substitute</b> to competitive developments
+<ul>
+<li>&#x2026; and some fail trying</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+<section id="slide-org0464454" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h4 id="org0464454">Match utility comparisons</h4>
+
+<div id="org2e06bc0" class="figure">
+<p><img src="../make_data/match_utility.svg" alt="match_utility.svg" class="org-svg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1f6b75b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h2 id="org1f6b75b"><span class="section-number-2">6.</span> Conclusion</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2b663fa" data-background="./figures/jmp/53pipitroad.jpg" data-background-opacity="0.1">
+<h3 id="org2b663fa">Main takeaways</h3>
+<ul>
+<li class="fragment fade-in">Changing the <b>rules of the game</b> is <b>not free</b>
+<ul>
+<li>Crucial to consider spillovers across markets</li>
+
+</ul></li>
+<li class="fragment fade-in"><b>Homeowners</b>: Think carefully about <b>portfolio choice</b>
+<ul>
+<li>Home equity affected by <i>prima facie</i> unrelated rule changes</li>
+
+</ul></li>
+<li class="fragment fade-in"><b>Government/Planner</b>: <b>Increasing supply</b> is "reliable"
+<ul>
+<li>At the margin, congestion alleviated by building more</li>
+
+</ul></li>
+
+</ul>
+
+<p>
+Future research: Optimal public housing location; Informational interventions
+</p>
+
+<br><div style="text-align:center; font-size: 50%;">
+<p>
+<b><b>Thank you!</b></b> (khl [at] princeton [dot] edu)
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc897de0" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.1">
+<h3 id="orgc897de0"><span class="section-number-3">6.1.</span> Literature review</h3>
+<ul>
+<li>Estimating demand for neighborhoods/housing: Bayer, Ferreira and McMillan
+(2007); Galiani, Murphy and Pantano (2015); Bayer et al (2016); Fu and Gregory
+(2019); Waldinger (2020); Davis, Gregory and Hartley (2021)
+<ul>
+<li>Moving and labor market impacts: e.g. Chyn (2018); Chyn, Hyman and Kapustin
+(2019); van Dijk (2020)</li>
+<li>Low-income housing/rent control: Diamond and McQuade (2019); Diamond,
+McQuade and Qian (2019)</li>
+<li>Housing search: Landvoigt, Piazzesi and Schneider (2015); Piazzesi and
+Schneider (2016); Piazzesi, Schneider and Stroebel (2020)</li>
+
+</ul></li>
+<li>Dynamic assignment mechanisms: Budish and Cantillon (2012); Agarwal and
+Somaini (2018); Agarwal et al (2020); Verdier and Reeling (2021)</li>
+<li>Large market models of one-sided matching: Bogomolnaia and Moulin (2001);
+Azevedo and Leshno (2016); Abdulkadiroglu et al. (2015); Leshno and Lo (2018)</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///Users/kwokhao/reveal.js/dist/reveal.js"></script>
+<script src="file:///Users/kwokhao/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="file:///Users/kwokhao/reveal.js/plugin/zoom/zoom.js"></script>
+<script src="file:///Users/kwokhao/reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown, RevealZoom, RevealNotes],
+transition:'none',
+});
+
+</script>
+</body>
+</html>
