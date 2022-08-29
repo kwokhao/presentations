@@ -13,27 +13,38 @@
 
 <link rel="stylesheet" href="./dist/theme/metropolis.css" id="theme"/>
 
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide" data-background="./figures/jmp/53pipitroad.jpg" data-background-opacity="0.2"><h1 class="title">The dynamic allocation of public housing: Policy and spillovers</h1><p class="subtitle"></p>
-<h2 class="author">Kwok-Hao Lee <br><br> (with Andrew Ferdowsian and Luther Yap)</h2><p class="date">Created: 2022-08-25 Thu 19:26</p>
+<h2 class="author">Kwok-Hao Lee <br><br> (with Andrew Ferdowsian and Luther Yap)</h2><p class="date">Created: 2022-08-29 Mon 12:17</p>
 </section>
 
 <section>
-<section id="slide-org8d8ecab" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org8d8ecab"><span class="section-number-2">1.</span> Introduction</h2>
+<section id="slide-orgec05522" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="orgec05522"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgaff06ff" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgaff06ff"><span class="section-number-3">1.1.</span> Who am I?</h3>
+<section id="slide-org5b8c1e5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org5b8c1e5"><span class="section-number-3">1.1.</span> Who am I?</h3>
 
-<div id="org33f1fb0" class="figure">
+<div id="orgf48818f" class="figure">
 <p><img src="./figures/jmp/kwokhao-bto.png" alt="kwokhao-bto.png" width="80%" height="80%" />
 </p>
 </div>
@@ -41,8 +52,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org59ed202" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org59ed202"><span class="section-number-3">1.2.</span> Motivation</h3>
+<section id="slide-orgb037565" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgb037565"><span class="section-number-3">1.2.</span> Motivation</h3>
 <p>
 We study the <b>design</b> of a <b>large-scale public housing program</b>
 </p>
@@ -71,8 +82,8 @@ Because of limited land and funding, housing assistance is rationed.
 </section>
 </section>
 <section>
-<section id="slide-orgac1dcd1" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgac1dcd1"><span class="section-number-3">1.3.</span> Research questions</h3>
+<section id="slide-orgbb04d45" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgbb04d45"><span class="section-number-3">1.3.</span> Research questions</h3>
 <div style="float:left; font-size: 95%">
 <ol>
 <li class="fragment fade-in">What are the effects of <b>changing allocation rules</b> for public housing?
@@ -101,8 +112,23 @@ supply</mark>&#x2026; Levies&#x2026; <mark>deter[ed] property
 </section>
 </section>
 <section>
-<section id="slide-org753f7c4" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org753f7c4"><span class="section-number-3">1.4.</span> Agenda</h3>
+<section id="slide-orgf57a5cb" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgf57a5cb"><span class="section-number-3">1.4.</span> Agenda</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">Introduce the setting and provide descriptive analysis</li>
+<li class="fragment fade-in-then-semi-out">Build dynamic structural model of (new) public housing allocation</li>
+<li class="fragment fade-in-then-semi-out">Estimate on novel data from the Singaporean mechanism
+<ul>
+<li>Key challenge: <b>endogenous lottery odds</b> and <b>2\(^{\circ} \) market prices</b></li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Evaluate rule changes and building more</li>
+
+</ul>
+
+</section>
+<section id="slide-org2d49305" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org2d49305">Agenda (detailed)</h4>
 <ul>
 <li class="fragment fade-in-then-semi-out">Introduce the setting and provide descriptive analysis</li>
 <li class="fragment fade-in-then-semi-out">Build dynamic structural model of (new) public housing allocation
@@ -120,29 +146,24 @@ buy off 2\(^{\circ} \) market
 </ul></li>
 <li class="fragment fade-in-then-semi-out">Estimate on novel data from the Singaporean mechanism
 <ul>
+<li>Key challenge: <b>endogenous lottery odds</b> and <b>2\(^{\circ} \) market prices</b></li>
 <li>Estimate dynamic demand (NFXP-GMM) and 2\(^{\circ} \) market supply (Euler
 CCP)</li>
-<li>Key challenge: <b>endogenous lottery odds</b> and <b>2\(^{\circ} \) market prices</b></li>
 <li>Strategy: Cost shifters + policy changes</li>
 
 </ul></li>
-<li class="fragment fade-in-then-semi-out">Evaluate how well the government can do&#x2026;
-<ul>
-<li>by changing allocation rules?</li>
-<li>by building a little more?</li>
-
-</ul></li>
+<li class="fragment fade-in-then-semi-out">Evaluate rule changes and building more</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orge2ba4b9" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orge2ba4b9"><span class="section-number-3">1.5.</span> Preview of results</h3>
+<section id="slide-orgf6cf3dd" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgf6cf3dd"><span class="section-number-3">1.5.</span> Preview of results</h3>
 <div class="column" style="float:left; width: 15%; vertical-align: top;">
 
-<div id="org9e52ad2" class="figure">
+<div id="org6f08e6e" class="figure">
 <p><img src="./figures/jmp/bto-flats-research-question-slide.png" alt="bto-flats-research-question-slide.png" />
 </p>
 </div>
@@ -152,15 +173,10 @@ CCP)</li>
 </p>
 <ul>
 <li class="fragment fade-in-then-semi-out">&#x2026; <b>generates spillovers in other markets</b></li>
-<li class="fragment fade-in-then-semi-out">Key <b>trade-off</b>: Young household welfare \( \leftrightarrow \)
-<ul>
-<li>Apartment vacancies</li>
-<li>Owner-occupier home equity</li>
-
-</ul></li>
 <li class="fragment fade-in-then-semi-out"><b>Inefficiency</b>: Waiting can be rational</li>
 
 </ul>
+
 <p>
 A strategyproof mechanism eliminating intertemporal risk&#x2026;
 </p>
@@ -177,11 +193,11 @@ A strategyproof mechanism eliminating intertemporal risk&#x2026;
 </div>
 
 </section>
-<section id="slide-org9bf2958" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org9bf2958"></h4>
+<section id="slide-orgfd5fc43" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgfd5fc43"></h4>
 <div class="column" style="float:left; width: 15%; vertical-align: top;">
 
-<div id="org99de5d7" class="figure">
+<div id="orgbc9a44a" class="figure">
 <p><img src="./figures/jmp/bto-flats-research-question-slide.png" alt="bto-flats-research-question-slide.png" />
 </p>
 </div>
@@ -207,8 +223,8 @@ A strategyproof mechanism eliminating intertemporal risk&#x2026;
 </div>
 
 </section>
-<section id="slide-org0123902" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org0123902">Contributions</h4>
+<section id="slide-org457866b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org457866b">Contributions</h4>
 <p>
 Evaluate efficiency and spillovers of a large housing assistance program.
 </p>
@@ -224,15 +240,15 @@ secondary market</li>
 </section>
 </section>
 <section>
-<section id="slide-org4390601" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org4390601"><span class="section-number-2">2.</span> Setting</h2>
+<section id="slide-org339c702" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="org339c702"><span class="section-number-2">2.</span> Setting</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgce9e392" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgce9e392"><span class="section-number-3">2.1.</span> Historical context</h3>
+<section id="slide-org28ac634" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org28ac634"><span class="section-number-3">2.1.</span> Historical context</h3>
 <p>
 <span class="underline"><b>80%</b></span> of Singaporean households live in government housing
 </p>
@@ -265,8 +281,8 @@ secondary market</li>
 </ul>
 
 </section>
-<section id="slide-orgcd253c1" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgcd253c1">Eligibility for the mechanism</h4>
+<section id="slide-org8ca3116" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org8ca3116">Eligibility for the mechanism</h4>
 <p>
 Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </p>
@@ -287,8 +303,8 @@ Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </ul>
 
 </section>
-<section id="slide-orgaf25869" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgaf25869">Subsidies and apartment types</h4>
+<section id="slide-org2ba565d" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org2ba565d">Subsidies and apartment types</h4>
 <ul>
 <li class="fragment fade-in-then-semi-out"><span class="underline"><b>Unit of analysis</b></span>: Housing <span class="underline">development</span>, (location, apartment size) pair</li>
 <li class="fragment fade-in-then-semi-out"><span class="underline"><b>Apartment types</b></span>
@@ -307,8 +323,8 @@ Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </ul>
 
 </section>
-<section id="slide-org55960dd" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org55960dd">Historical context (comparison)</h4>
+<section id="slide-orgb4e49ae" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgb4e49ae">Historical context (comparison)</h4>
 <div style="font-size: 90%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -394,28 +410,28 @@ Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </section>
 </section>
 <section>
-<section id="slide-orgfe59b1b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgfe59b1b"><span class="section-number-3">2.2.</span> The Singaporean housing market</h3>
+<section id="slide-orgbe7b402" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgbe7b402"><span class="section-number-3">2.2.</span> The Singaporean housing market</h3>
 
-<div id="org46aa251" class="figure">
+<div id="org6cc05d0" class="figure">
 <p><img src="./figures/jmp/singapore-housing-market.png" alt="singapore-housing-market.png" width="100%" height="100%" />
 </p>
 </div>
 
 </section>
-<section id="slide-org1a60076" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org1a60076">Location of BTO developments</h4>
+<section id="slide-orgff03c19" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgff03c19">Location of BTO developments</h4>
 
-<div id="org89eccc2" class="figure">
+<div id="org1eac548" class="figure">
 <p><img src="./figures/jmp/bto_map.png" alt="bto_map.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org61f36fe" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org61f36fe">Within a period&#x2026;</h4>
+<section id="slide-orge7e4850" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orge7e4850">Within a period&#x2026;</h4>
 
-<div id="orgef051a1" class="figure">
+<div id="orgfd96406" class="figure">
 <p><img src="./figures/jmp/btoApplicationFlowchart.png" alt="btoApplicationFlowchart.png" width="100%" height="100%" />
 </p>
 </div>
@@ -426,22 +442,22 @@ Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </ul>
 
 </section>
-<section id="slide-org00a1576" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org00a1576"></h4>
+<section id="slide-orgb3bdde4" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgb3bdde4"></h4>
 
-<div id="org0f55a54" class="figure">
+<div id="org8124c6f" class="figure">
 <p><img src="./figures/jmp/ng-2021-bto-delays-title.png" alt="ng-2021-bto-delays-title.png" width="80%" height="80%" />
 </p>
 </div>
 
 </section>
-<section id="slide-orga3d73a7" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orga3d73a7"></h4>
+<section id="slide-org36b01b6" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org36b01b6"></h4>
 <p>
 <span class="underline">Housing affordable for the poor?</span>
 </p>
 
-<div id="orgdd196be" class="figure">
+<div id="org0f4e0f9" class="figure">
 <p><img src="./figures/jmp/2018-HDB-SHS-valueformoney-labeled.png" alt="2018-HDB-SHS-valueformoney-labeled.png" width="90%" height="90%" />
 </p>
 </div>
@@ -449,10 +465,10 @@ Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </section>
 </section>
 <section>
-<section id="slide-org6527840" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org6527840"><span class="section-number-3">2.3.</span> Time dependence</h3>
+<section id="slide-org84a13ef" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org84a13ef"><span class="section-number-3">2.3.</span> Time dependence</h3>
 
-<div id="org7e9e8c9" class="figure">
+<div id="orgb7d4dcc" class="figure">
 <p><img src="./figures/jmp/binscatter_mrt_time_dependence.svg" alt="binscatter_mrt_time_dependence.svg" class="org-svg" />
 </p>
 </div>
@@ -460,15 +476,15 @@ Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </section>
 </section>
 <section>
-<section id="slide-org4de7f7b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org4de7f7b"><span class="section-number-2">3.</span> Illustrative model</h2>
+<section id="slide-org35ac000" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="org35ac000"><span class="section-number-2">3.</span> Illustrative model</h2>
 <div class="outline-text-2" id="text-3">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8f0c23e" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org8f0c23e"><span class="section-number-3">3.1.</span> Illustrative model of housing choice</h3>
+<section id="slide-orgc44060d" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgc44060d"><span class="section-number-3">3.1.</span> Illustrative model of housing choice</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Players: \( i = 1, 2, 3 \)</li>
 <li class="fragment fade-in-then-semi-out">Houses: \( j = A, B \)
@@ -497,8 +513,8 @@ Applicants apply for BTO as a <b>family unit</b> (typically a married couple)
 </ul>
 
 </section>
-<section id="slide-orgf5293a6" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgf5293a6">Benchmark equilibrium</h4>
+<section id="slide-orgb40fd40" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgb40fd40">Benchmark equilibrium</h4>
 <p>
 Induct backwards.
 </p>
@@ -522,8 +538,8 @@ Induct backwards.
 </ul>
 
 </section>
-<section id="slide-org2a29120" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org2a29120">Building 1 more "B" may not help&#x2026;</h4>
+<section id="slide-org5fc3dc2" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org5fc3dc2">Building 1 more "B" may not help&#x2026;</h4>
 <p>
 Suppose the government built one more "B" house.
 </p>
@@ -555,8 +571,8 @@ Suppose the government built one more "B" house.
 </ul>
 
 </section>
-<section id="slide-org49a43df" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org49a43df">&#x2026; unless we "fix" the rules</h4>
+<section id="slide-org2a7f8c0" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org2a7f8c0">&#x2026; unless we "fix" the rules</h4>
 <p>
 Suppose the government
 </p>
@@ -583,8 +599,8 @@ Then
 </section>
 </section>
 <section>
-<section id="slide-orga80839d" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="orga80839d"><span class="section-number-2">4.</span> Model: Outline</h2>
+<section id="slide-org339e4c5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="org339e4c5"><span class="section-number-2">4.</span> Model: Outline</h2>
 <p>
 Needed to predict equilibrium effects of rule changes and added supply on
 <b>lottery odds</b> and <b>aftermarket prices</b>.
@@ -593,8 +609,8 @@ Needed to predict equilibrium effects of rule changes and added supply on
 </section>
 </section>
 <section>
-<section id="slide-orgc849b00" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgc849b00"><span class="section-number-3">4.1.</span> <span class="underline">Dynamic equilibrium</span> model of housing choice</h3>
+<section id="slide-orgcb0952e" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgcb0952e"><span class="section-number-3">4.1.</span> <span class="underline">Dynamic equilibrium</span> model of housing choice</h3>
 <p>
 Every period, <b>new housing developments</b> arrive exogenously.
 </p>
@@ -635,8 +651,8 @@ Every period, <b>new housing developments</b> arrive exogenously.
 </p>
 
 </section>
-<section id="slide-orgd03abc9" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgd03abc9"></h4>
+<section id="slide-orgcc39b15" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgcc39b15"></h4>
 <p>
 <b>Endogenous objects</b>
 </p>
@@ -660,15 +676,15 @@ Every period, <b>new housing developments</b> arrive exogenously.
 </section>
 </section>
 <section>
-<section id="slide-org3657c08" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org3657c08"><span class="section-number-2">5.</span> Model: Details</h2>
+<section id="slide-org029331a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="org029331a"><span class="section-number-2">5.</span> Model: Details</h2>
 <div class="outline-text-2" id="text-5">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org1287001" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org1287001"><span class="section-number-3">5.1.</span> Model &#x2014; Supply</h3>
+<section id="slide-orgbc7d0df" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgbc7d0df"><span class="section-number-3">5.1.</span> Model &#x2014; Supply</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Assume the PHA's development locations and quantities are fixed.</li>
 <li class="fragment fade-in-then-semi-out">Each period, an owner-occupier decides whether or not to sell off her
@@ -682,8 +698,8 @@ apartment.
 </ul>
 
 </section>
-<section id="slide-org28a96d5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org28a96d5"><span class="underline">Secondary market supply equations</span></h4>
+<section id="slide-org6b7fd05" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org6b7fd05"><span class="underline">Secondary market supply equations</span></h4>
 <ul>
 <li class="fragment fade-in-then-semi-out">Every quarter: owner-occupier decides whether to sell off her apartment</li>
 <li class="fragment fade-in-then-semi-out">Indirect utility from selling is \[ w_{i1t|l} = \rho_0 \bar p^S_{t|l} +
@@ -694,8 +710,8 @@ apartment.
 </ul>
 
 </section>
-<section id="slide-org22f97d3" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org22f97d3"><span class="underline">Secondary market shares</span></h4>
+<section id="slide-orgf92765b" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgf92765b"><span class="underline">Secondary market shares</span></h4>
 <ul>
 <li class="fragment fade-in-then-semi-out">Market share of sellers of size \( l \) at time \( t \) is \[ s_{1t|l}(\bar
   p^S_{t|l}) = \frac{\exp[\bar w_{1t|l}(\bar p^S_{t|l})]}{\exp[\bar w_{0t|l}(\bar
@@ -709,10 +725,10 @@ type \( l \) apartments at time \( t \).</li>
 </section>
 </section>
 <section>
-<section id="slide-org4487119" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org4487119"><span class="section-number-3">5.2.</span> Model &#x2014; Demand (Timing)</h3>
+<section id="slide-org1058cd5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org1058cd5"><span class="section-number-3">5.2.</span> Model &#x2014; Demand (Timing)</h3>
 
-<div id="org95b9cae" class="figure">
+<div id="org909ebdd" class="figure">
 <p><img src="./figures/jmp/btoApplicationFlowchart.png" alt="btoApplicationFlowchart.png" width="100%" height="100%" />
 </p>
 </div>
@@ -730,8 +746,8 @@ Cannot participate if I already own a house.
 </section>
 </section>
 <section>
-<section id="slide-org236097f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org236097f"><span class="section-number-3">5.3.</span> Model &#x2014; Demand (Preferences)</h3>
+<section id="slide-orgfa77bb4" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgfa77bb4"><span class="section-number-3">5.3.</span> Model &#x2014; Demand (Preferences)</h3>
 <p>
 Every period, a fixed number of poor and rich agents (800:3200) become active in
 the mechanism.
@@ -742,8 +758,8 @@ Specify model backwards.
 </p>
 
 </section>
-<section id="slide-orgffd3af0" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgffd3af0"><span class="underline">Terminal payoffs</span></h4>
+<section id="slide-orgac7dde5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgac7dde5"><span class="underline">Terminal payoffs</span></h4>
 <p>
 <span class="underline">Utility of matched households</span>
 </p>
@@ -766,8 +782,8 @@ Specify model backwards.
 </ul>
 
 </section>
-<section id="slide-org45df827" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org45df827"><span class="underline">Choice-specific value functions</span></h4>
+<section id="slide-org196415f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org196415f"><span class="underline">Choice-specific value functions</span></h4>
 <ul>
 <li>BTO apartment \( a \): \[ v_{it}(a; y, \tau) = q_{at} U_t(a; y) +
   (1-q_{at})U_t(0; y, \tau) + \epsilon_{iat} \]</li>
@@ -779,8 +795,8 @@ Specify model backwards.
 </ul>
 
 </section>
-<section id="slide-orgebeb84e" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgebeb84e"><span class="underline">Household decision problem</span></h4>
+<section id="slide-org51efec7" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org51efec7"><span class="underline">Household decision problem</span></h4>
 <ul>
 <li>If unmatched, decides optimally: \[ V_t(y, \tau) = \mathbb{E}\left\{\max_{d
   \in \mathcal{A}_t \cup \{E, W\}} \mathbb{E}_t[v_{it}(d; y, \tau) | d,
@@ -796,8 +812,8 @@ Specify model backwards.
 </ul>
 
 </section>
-<section id="slide-org9ea05f5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org9ea05f5"><span class="underline">Transition rules</span></h4>
+<section id="slide-orgad302cc" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgad302cc"><span class="underline">Transition rules</span></h4>
 <div style="text-align:center;">
 <p>
 <b>BTO applicants to apartment \( a \)</b>
@@ -822,7 +838,7 @@ Specify model backwards.
 </div></div>
 
 </section>
-<section id="slide-org9ea05f5-split" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<section id="slide-orgad302cc-split" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
 
 <div style="text-align:center;">
 <div class="column" style="float:left; width: 50%">
@@ -852,8 +868,8 @@ Specify model backwards.
 </div></div>
 
 </section>
-<section id="slide-org339e197" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org339e197"><span class="underline">Market shares</span></h4>
+<section id="slide-orgdf17754" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgdf17754"><span class="underline">Market shares</span></h4>
 <ul>
 <li>Market share of BTO apartment \( a \) at time \( t \): \[ s_{at} = M_t^{-1}
   \int \frac{\exp(\bar v_{it}(a; y, \tau))}{\exp(\bar v_{it}(E; y)) + \exp(\bar
@@ -869,8 +885,8 @@ Specify model backwards.
 </section>
 </section>
 <section>
-<section id="slide-orge154b27" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orge154b27"><span class="section-number-3">5.4.</span> Model &#x2014; Equilibrium</h3>
+<section id="slide-orgc45d007" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgc45d007"><span class="section-number-3">5.4.</span> Model &#x2014; Equilibrium</h3>
 <p>
 In equilibrium,
 </p>
@@ -885,15 +901,15 @@ In equilibrium,
 </section>
 </section>
 <section>
-<section id="slide-org1d3b6db" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org1d3b6db"><span class="section-number-2">6.</span> Estimation: Outline</h2>
+<section id="slide-orga14aecd" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="orga14aecd"><span class="section-number-2">6.</span> Estimation: Outline</h2>
 <div class="outline-text-2" id="text-6">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga815837" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orga815837"><span class="section-number-3">6.1.</span> Data and where we are headed</h3>
+<section id="slide-org3b68d51" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org3b68d51"><span class="section-number-3">6.1.</span> Data and where we are headed</h3>
 <p>
 Want to recover&#x2026;
 </p>
@@ -922,8 +938,8 @@ transactions</b>
 </ul>
 
 </section>
-<section id="slide-org36ea3e7" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org36ea3e7"><span class="underline">Supply estimation: Brief</span></h4>
+<section id="slide-org71c92f3" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org71c92f3"><span class="underline">Supply estimation: Brief</span></h4>
 <div style="font-size:110%;">
 <p>
 <b>Secondary Market Supply</b>: Price sensitivities recovered via <i>IV-FE regression</i>
@@ -940,8 +956,8 @@ restriction (2018)</li>
 </div>
 
 </section>
-<section id="slide-orga7dad85" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orga7dad85"><span class="underline">Demand estimation: Brief</span></h4>
+<section id="slide-orgf100e72" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgf100e72"><span class="underline">Demand estimation: Brief</span></h4>
 <div style="font-size:110%;">
 <p>
 <b>Demand</b>: Young household preferences recovered via <i>GMM</i> ("Dynamic BLP", e.g.
@@ -963,15 +979,15 @@ developments
 </section>
 </section>
 <section>
-<section id="slide-org592162c" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org592162c"><span class="section-number-2">7.</span> Estimation: Details</h2>
+<section id="slide-org501c412" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="org501c412"><span class="section-number-2">7.</span> Estimation: Details</h2>
 <div class="outline-text-2" id="text-7">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org38d08ec" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org38d08ec"><span class="section-number-3">7.1.</span> Supply estimation: Outline</h3>
+<section id="slide-org16129f1" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org16129f1"><span class="section-number-3">7.1.</span> Supply estimation: Outline</h3>
 <p>
 Want to recover <b>how sensitive</b> each household's moving decision is to changes
 in their <b>apartment's price</b>.
@@ -1003,8 +1019,8 @@ time</li>
 </ul>
 
 </section>
-<section id="slide-orgbe8166e" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgbe8166e"><span class="underline">Supply estimation: Hotz-Miller inversion</span></h4>
+<section id="slide-org62ae1c5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org62ae1c5"><span class="underline">Supply estimation: Hotz-Miller inversion</span></h4>
 <p>
 By a Hotz-Miller (1993) inversion, the relative attractiveness of selling vs.
 staying is \[ \Delta_{1,0} \ln s_{t|l} = \Delta_{1,0} \bar w_{t|l} = \rho_0 \bar
@@ -1022,8 +1038,8 @@ p^S_{t|l} + x_{1t|l}'\rho_1 + \Delta_{1,0} \xi_{t|l} - \delta^o
 </ul>
 
 </section>
-<section id="slide-orgbdba337" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgbdba337"><span class="underline">Identification &#x2014; Dynamic Supply</span></h4>
+<section id="slide-org720239f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org720239f"><span class="underline">Identification &#x2014; Dynamic Supply</span></h4>
 <div>
 \begin{align*}
 (\Delta_{1,0} \ln s_{t|l}) - \delta^o \ln s_{1t+1|l} &= - \delta^o \gamma^E +
@@ -1056,9 +1072,9 @@ probability of sale</li>
 </ul>
 
 </section>
-<section id="slide-orgeb7bbf9" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgeb7bbf9"><span class="underline">Results &#x2014; Dynamic Supply</span></h4>
-<pre class="example" id="orgc4e96ac">
+<section id="slide-org9eb7c0f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org9eb7c0f"><span class="underline">Results &#x2014; Dynamic Supply</span></h4>
+<pre class="example" id="org73f32ed">
 res_s = reg(drf, @formula(y ~ (p_adj ~ post2015 + absd2018 + post2019) +
 	    fe(flat_type) + fe(town)), Vcov.robust(), save=:fe)
 
@@ -1092,8 +1108,8 @@ Assume discount factor of 0.96 per year
 </section>
 </section>
 <section>
-<section id="slide-orga198bcf" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orga198bcf"><span class="section-number-3">7.2.</span> Demand estimation: Outline</h3>
+<section id="slide-org831e993" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org831e993"><span class="section-number-3">7.2.</span> Demand estimation: Outline</h3>
 <p>
 <b>Young household preferences</b> recovered via two-step optimal GMM ("Dynamic BLP",
  e.g. Gowrisankaran and Rysman 2012)
@@ -1120,8 +1136,8 @@ shares equal to observed shares&#x2026;</li>
 </ul>
 
 </section>
-<section id="slide-orgf35468e" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgf35468e"><span class="underline">Assumptions on primitives</span></h4>
+<section id="slide-org4cb1965" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org4cb1965"><span class="underline">Assumptions on primitives</span></h4>
 <ul>
 <li class="fragment fade-in-then-semi-out"><span class="underline">Income distribution</span>: Poor/rich, 20%/80% of entrants
 <ul>
@@ -1135,8 +1151,8 @@ costs \( c^y \)</li>
 </ul>
 
 </section>
-<section id="slide-orgb8ecd5f" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgb8ecd5f"><span class="underline">Agent birth-death process</span></h4>
+<section id="slide-orgd32513a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgd32513a"><span class="underline">Agent birth-death process</span></h4>
 <ul>
 <li class="fragment fade-in-then-semi-out"><span class="underline">Share of exiters</span>: 30% of resale market volume</li>
 <li class="fragment fade-in-then-semi-out"><span class="underline">Number of entrants in each period</span>: 800 poor, 3,200 rich
@@ -1156,8 +1172,8 @@ costs \( c^y \)</li>
 </section>
 </section>
 <section>
-<section id="slide-orgf1ee680" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgf1ee680"><span class="section-number-3">7.3.</span> Demand estimation: Endogeneity and identification</h3>
+<section id="slide-orgd811ed3" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgd811ed3"><span class="section-number-3">7.3.</span> Demand estimation: Endogeneity and identification</h3>
 <p>
 <b>Exclusion restriction</b>: \( \mathbb{E}[z_{at} \xi_{at}(\theta)] = 0 \)
 </p>
@@ -1172,15 +1188,15 @@ costs \( c^y \)</li>
 </ul>
 
 </section>
-<section id="slide-org50f47aa" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org50f47aa"><span class="underline">Instruments and identifying variation</span></h4>
+<section id="slide-orgc0d8dcb" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgc0d8dcb"><span class="underline">Instruments and identifying variation</span></h4>
 <p>
 <b>Instruments</b>
 </p>
 <ul>
 <li class="fragment fade-in-then-semi-out"><span class="underline">Cost shifters</span>: E.g. price of granite x apartment size</li>
 <li class="fragment fade-in-then-semi-out"><span class="underline">Supply shock</span> in January 2013: Higher stamp duties</li>
-<li class="fragment fade-in-then-semi-out"><span class="underline"><a href="#/slide-orgc710eb9">Differentiation IVs</a></span> (Gandhi and Houde 2021)</li>
+<li class="fragment fade-in-then-semi-out"><span class="underline"><a href="#/slide-org9cc25a5">Differentiation IVs</a></span> (Gandhi and Houde 2021)</li>
 
 </ul>
 
@@ -1192,7 +1208,7 @@ costs \( c^y \)</li>
 developments vary in observables and market shares
 <ul>
 <li>Poor also face different prices from rich (explicit subsidies)</li>
-<li>Identifies <a href="#/slide-org8a5d8d0">type-specific coefficients</a> in indirect utilities</li>
+<li>Identifies <a href="#/slide-org234a1fe">type-specific coefficients</a> in indirect utilities</li>
 
 </ul></li>
 <li class="fragment fade-in-then-semi-out"><span class="underline">Wait costs</span>: Across periods, applicants face different choice sets
@@ -1206,8 +1222,8 @@ developments vary in observables and market shares
 </section>
 </section>
 <section>
-<section id="slide-org94d0470" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org94d0470"><span class="section-number-3">7.4.</span> Demand estimation: Interpretable results</h3>
+<section id="slide-org1258327" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org1258327"><span class="section-number-3">7.4.</span> Demand estimation: Interpretable results</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1277,14 +1293,14 @@ developments vary in observables and market shares
 
 <div style="font-size: 50%;">
 <p>
-<a href="#/slide-orgab877c3">Other coefficients</a>: distance to SAP school, apartment size, price (by income),
+<a href="#/slide-org7f7d8c0">Other coefficients</a>: distance to SAP school, apartment size, price (by income),
 forward resale price
 </p>
 </div>
 
 </section>
-<section id="slide-orgab877c3" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgab877c3">Full results</h4>
+<section id="slide-org7f7d8c0" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org7f7d8c0">Full results</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1386,16 +1402,16 @@ forward resale price
 
 <div style="font-size: 50%;">
 <p>
-<a href="#/slide-org94d0470">(BACK TO DEMAND RESULTS)</a>
+<a href="#/slide-org1258327">(BACK TO DEMAND RESULTS)</a>
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgf1c1ac2" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgf1c1ac2"><span class="section-number-3">7.5.</span> Model fit</h3>
-<table id="org3478433" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<section id="slide-orgd03398a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgd03398a"><span class="section-number-3">7.5.</span> Model fit</h3>
+<table id="org1117db6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -1462,19 +1478,19 @@ forward resale price
 </table>
 
 </section>
-<section id="slide-org8c20267" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org8c20267">Distribution of unobservable development quality</h4>
+<section id="slide-orgc083e4a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="orgc083e4a">Distribution of unobservable development quality</h4>
 
-<div id="orgd4fd048" class="figure">
+<div id="orgff7b19a" class="figure">
 <p><img src="./figures/jmp/resid_fit_plot.svg" alt="resid_fit_plot.svg" class="org-svg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgebfe1cd" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="orgebfe1cd">Binscatters of unobservable development quality</h4>
+<section id="slide-org62cdf0e" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org62cdf0e">Binscatters of unobservable development quality</h4>
 
-<div id="org5df14b6" class="figure">
+<div id="orgecd555f" class="figure">
 <p><img src="./figures/jmp/resid_corr_plot.svg" alt="resid_corr_plot.svg" class="org-svg" />
 </p>
 </div>
@@ -1482,15 +1498,15 @@ forward resale price
 </section>
 </section>
 <section>
-<section id="slide-org2af6e9a" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org2af6e9a"><span class="section-number-2">8.</span> Counterfactuals</h2>
+<section id="slide-orgec48834" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="orgec48834"><span class="section-number-2">8.</span> Counterfactuals</h2>
 <div class="outline-text-2" id="text-8">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org905f9d9" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org905f9d9"><span class="section-number-3">8.1.</span> Changing allocation rules</h3>
+<section id="slide-org3386985" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org3386985"><span class="section-number-3">8.1.</span> Changing allocation rules</h3>
 <div style="font-size:110%;">
 <p>
 What happens if we eliminate intertemporal risk through a <b>variant of RSD</b>?
@@ -1507,8 +1523,8 @@ In simulations, find 2\(^{\circ}\) prices to clear the market.
 </p>
 </div>
 </section>
-<section id="slide-org451e870" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h4 id="org451e870">RSD counterfactual results</h4>
+<section id="slide-org14420a6" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h4 id="org14420a6">RSD counterfactual results</h4>
 <p>
 We find
 </p>
@@ -1536,8 +1552,8 @@ over redistribution (to the young).
 </section>
 </section>
 <section>
-<section id="slide-org4d034c8" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org4d034c8"><span class="section-number-3">8.2.</span> Comparing changing rules to building more</h3>
+<section id="slide-orgd725532" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgd725532"><span class="section-number-3">8.2.</span> Comparing changing rules to building more</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1609,15 +1625,15 @@ over redistribution (to the young).
 </section>
 </section>
 <section>
-<section id="slide-org6529237" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org6529237"><span class="section-number-2">9.</span> Conclusion</h2>
+<section id="slide-orgc386228" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="orgc386228"><span class="section-number-2">9.</span> Conclusion</h2>
 <div class="outline-text-2" id="text-9">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgd72d2db" data-background="./figures/jmp/53pipitroad.jpg" data-background-opacity="0.1">
-<h3 id="orgd72d2db">Main takeaways</h3>
+<section id="slide-orgce5cec6" data-background="./figures/jmp/53pipitroad.jpg" data-background-opacity="0.1">
+<h3 id="orgce5cec6">Main takeaways</h3>
 <ul>
 <li class="fragment fade-in">Changing the <b>rules of the game</b> is <b>not free</b>
 <ul>
@@ -1650,8 +1666,8 @@ Future research: Optimal public housing location; Informational interventions
 </section>
 </section>
 <section>
-<section id="slide-orgcd6e8a7" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgcd6e8a7"><span class="section-number-3">9.1.</span> Literature review</h3>
+<section id="slide-org30e269d" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org30e269d"><span class="section-number-3">9.1.</span> Literature review</h3>
 <ul>
 <li>Estimating demand for neighborhoods/housing: Bayer, Ferreira and McMillan
 (2007); Galiani, Murphy and Pantano (2015); Bayer et al (2016); Fu and Gregory
@@ -1676,15 +1692,15 @@ Azevedo and Leshno (2016); Abdulkadiroglu et al. (2015); Leshno and Lo (2018)</l
 </section>
 </section>
 <section>
-<section id="slide-org8f0a464" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h2 id="org8f0a464"><span class="section-number-2">10.</span> Appendix</h2>
+<section id="slide-orgb792330" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h2 id="orgb792330"><span class="section-number-2">10.</span> Appendix</h2>
 <div class="outline-text-2" id="text-10">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org92ce754" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org92ce754"><span class="section-number-3">10.1.</span> Formal statement of equilibrium</h3>
+<section id="slide-orgf713811" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgf713811"><span class="section-number-3">10.1.</span> Formal statement of equilibrium</h3>
 <p>
 An <b>equilibrium</b> is a set of type-specific application probabilities \( s_{iat}
 \); secondary market shares \( s^R_{it} \); success probabilities \( q(\cdot,
@@ -1709,8 +1725,8 @@ are consistent with the realized path of prices on the secondary market.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc710eb9" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgc710eb9"><span class="section-number-3">10.2.</span> Computing Differentiation IVs</h3>
+<section id="slide-org9cc25a5" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org9cc25a5"><span class="section-number-3">10.2.</span> Computing Differentiation IVs</h3>
 <ol>
 <li>Predict endogenous prices
 <ul>
@@ -1733,14 +1749,14 @@ price,
 
 <div style="font-size: 50%;">
 <p>
-<a href="#/slide-orgf1ee680">(BACK TO IDENTIFICATION)</a>
+<a href="#/slide-orgd811ed3">(BACK TO IDENTIFICATION)</a>
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org3941b59" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org3941b59"><span class="section-number-3">10.3.</span> Instrument validity</h3>
+<section id="slide-orgc594737" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgc594737"><span class="section-number-3">10.3.</span> Instrument validity</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out"><span class="underline">Exogeneity</span>
 <ol>
@@ -1750,7 +1766,7 @@ amenities</li>
      = 0 \).</li>
 
 </ol></li>
-<li class="fragment fade-in-then-semi-out"><span class="underline">Relevance</span>: <a href="#/slide-orgd253b08">Strong "first stage"</a>.
+<li class="fragment fade-in-then-semi-out"><span class="underline">Relevance</span>: <a href="#/slide-orgf853224">Strong "first stage"</a>.
 <ul>
 <li>To \( s_{at} \): Shifting \( x_{-at} \) mechanically shifts \( s_{at} \)</li>
 <li>To \( p_{at} \): Government passes higher costs of construction to
@@ -1770,14 +1786,14 @@ lowers \( p^S_{at} \)</li>
 
 <div style="font-size: 50%;">
 <p>
-<a href="#/slide-orgf1ee680">(BACK TO IDENTIFICATION)</a>
+<a href="#/slide-orgd811ed3">(BACK TO IDENTIFICATION)</a>
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgd253b08" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="orgd253b08"><span class="section-number-3">10.4.</span> First stage is strong</h3>
+<section id="slide-orgf853224" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="orgf853224"><span class="section-number-3">10.4.</span> First stage is strong</h3>
 <p>
 When regressing on instruments:
 </p>
@@ -1818,14 +1834,14 @@ When regressing on instruments:
 
 <div style="font-size: 50%;">
 <p>
-<a href="#/slide-orgf1ee680">(BACK TO IDENTIFICATION)</a>
+<a href="#/slide-orgd811ed3">(BACK TO IDENTIFICATION)</a>
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8a5d8d0" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
-<h3 id="org8a5d8d0"><span class="section-number-3">10.5.</span> Example illustrating identification of latent price/wait cost coefficients</h3>
+<section id="slide-org234a1fe" data-background="./figures/jmp/dragonplayground.jpg" data-background-opacity="0.05">
+<h3 id="org234a1fe"><span class="section-number-3">10.5.</span> Example illustrating identification of latent price/wait cost coefficients</h3>
 <p>
 Focus on static model with two income types (H/L), one product per period and
 outside option. Indirect utilities are \[ \bar u^y_{1t} = \alpha_0^y -
@@ -1846,7 +1862,7 @@ both</li>
 </ul>
 <div style="font-size: 50%;">
 <p>
-<a href="#/slide-orgf1ee680">(BACK TO IDENTIFICATION)</a>
+<a href="#/slide-orgd811ed3">(BACK TO IDENTIFICATION)</a>
 </p>
 </div>
 </section>
