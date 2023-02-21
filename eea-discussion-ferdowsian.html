@@ -19,42 +19,141 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">EEA Discussion: Transient Matching + BTO</h1><p class="subtitle"></p>
-<h2 class="author">Kwok-Hao Lee</h2><p class="date">Created: 2023-02-18 Sat 21:44</p>
+<h2 class="author">Kwok-Hao Lee</h2><p class="date">Created: 2023-02-21 Tue 17:40</p>
 </section>
 
 <section>
-<section id="slide-org60d9fba">
-<h2 id="org60d9fba"><span class="section-number-2">1.</span> Transient Matching</h2>
+<section id="slide-org3992fcb">
+<h2 id="org3992fcb"><span class="section-number-2">1.</span> Transient Matching</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgbb70a75">
-<h3 id="orgbb70a75"><span class="section-number-3">1.1.</span> Summary</h3>
-</section>
-</section>
-<section>
-<section id="slide-org33e9e0c">
-<h3 id="org33e9e0c"><span class="section-number-3">1.2.</span> What the paper does well</h3>
-</section>
-</section>
-<section>
-<section id="slide-org0ee7ca4">
-<h3 id="org0ee7ca4"><span class="section-number-3">1.3.</span> Possible extensions</h3>
+<section id="slide-orga7e40a7">
+<h3 id="orga7e40a7"><span class="section-number-3">1.1.</span> Motivation</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">Canonical market design setting: agents
+<ul>
+<li><b>know everything</b> and</li>
+<li>are <b>matched once and for all</b></li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">But in practice, e.g., on the econ job market&#x2026;
+<ul>
+<li>I don't know my fit at Princeton;</li>
+<li>I don't know Andrew's type; and</li>
+<li>We can move between institutions after a few years</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">How should we think about <b>learning</b> and <b>rematching</b>?
+<ul>
+<li>What does <b>equilibrium</b> look like?</li>
+
+</ul></li>
+
+</ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org9f31f9e">
-<h2 id="org9f31f9e"><span class="section-number-2">2.</span> BTO: Endogenous Supply in Centralized Mechanisms</h2>
+<section id="slide-orge62aaac">
+<h3 id="orge62aaac"><span class="section-number-3">1.2.</span> Contribution</h3>
+<p>
+Tractable <b>bandit model</b> of <b>transient matching</b> in <b>decentralized markets</b>
+</p>
+<ol>
+<li class="fragment fade-in-then-semi-out">Every period, each worker applies to one firm</li>
+<li class="fragment fade-in-then-semi-out">Firms accept workers above quality cutoff (<b>endogenous</b>)</li>
+<li class="fragment fade-in-then-semi-out">If successful, workers learn fit at firm. Else only learn rejection.</li>
+<li class="fragment fade-in-then-semi-out">Repeat Steps 1-3</li>
+
+</ol>
+
+<p>
+Examine steady state of this system (unique if prefs aligned)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbb6f0c8">
+<h3 id="orgbb6f0c8"><span class="section-number-3">1.3.</span> Results and policy implications</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out"><b>Rationalizes stylized facts in data</b>
+<ol>
+<li>Higher-quality workers search less</li>
+<li>Worker tenure increases with age</li>
+
+</ol></li>
+<li class="fragment fade-in-then-semi-out">Equilibria generally <b>inefficient</b>: competition depresses incentive to search</li>
+
+</ul>
+
+<p>
+Confirms some <b>common policies</b> are effective, but not others.
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out"><b>Headhunters</b> are better for low-quality workers; raise efficiency</li>
+<li class="fragment fade-in-then-semi-out"><b>Unemployment benefits</b> depresses search; lower efficiency</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9e8a79e">
+<h3 id="org9e8a79e"><span class="section-number-3">1.4.</span> I like the paper!</h3>
+<ul>
+<li>Ambitious!</li>
+<li>Theoretically <b>sophisticated</b> yet <b>tractable</b>
+<ul>
+<li>No clean characterization of optimal dynamic matching protocol</li>
+<li>This paper takes one step in that direction</li>
+
+</ul></li>
+<li>Has useful <b>policy implications</b></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0d9319e">
+<h3 id="org0d9319e"><span class="section-number-3">1.5.</span> Possible concerns + extensions</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">In bandit model, <b>independence between arms</b> is key
+<ul>
+<li>Interpretation: my chance of getting hired at MIT is independent of my
+chance of getting hired at Harvard, <b>conditional on class</b></li>
+<li>Can we <b>relax independence</b>?
+<ul>
+<li>Hard but see recent work in CS/OM.</li>
+
+</ul></li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><b>Transitional dynamics</b>?
+<ul>
+<li>Sudden influx of Theory/IO candidates in one year?</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><b>Take this model to data</b>?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1c43c2b">
+<h2 id="org1c43c2b"><span class="section-number-2">2.</span> BTO: Endogenous Supply in Centralized Mechanisms</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga0eb5dd">
-<h3 id="orga0eb5dd"><span class="section-number-3">2.1.</span> Summary</h3>
+<section id="slide-orga351b3e">
+<h3 id="orga351b3e"><span class="section-number-3">2.1.</span> Summary</h3>
 <ul>
 <li class="fragment fade-in">How should the designer of a waitlist <b>supply goods</b>, knowing <b>earlier
 realizations of demand</b>?
@@ -78,11 +177,12 @@ unassignment.</li>
 </ul></li>
 
 </ul>
+
 </section>
 </section>
 <section>
-<section id="slide-org259e9e9">
-<h3 id="org259e9e9"><span class="section-number-3">2.2.</span> Results</h3>
+<section id="slide-orgd28c3fc">
+<h3 id="orgd28c3fc"><span class="section-number-3">2.2.</span> Results</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Naive mechanism: Build studio iff <b>previous person joins queue for studios.</b></li>
 <li class="fragment fade-in-then-semi-out">BUT <b>doesn't work</b> if few people prefer studios AND are impatient!
@@ -104,8 +204,8 @@ competition.</li>
 </section>
 </section>
 <section>
-<section id="slide-org6318b8d">
-<h3 id="org6318b8d"><span class="section-number-3">2.3.</span> What (I think) the paper does well</h3>
+<section id="slide-orgb191c3e">
+<h3 id="orgb191c3e"><span class="section-number-3">2.3.</span> What (I think) the paper does well</h3>
 <ul>
 <li class="fragment fade-in">Tractable model of a waitlist with endogenous supply</li>
 <li class="fragment fade-in">Applicable to many settings with horizontal preferences</li>
@@ -116,8 +216,8 @@ competition.</li>
 </section>
 </section>
 <section>
-<section id="slide-org103f557">
-<h3 id="org103f557"><span class="section-number-3">2.4.</span> Extensions</h3>
+<section id="slide-orgec35f4e">
+<h3 id="orgec35f4e"><span class="section-number-3">2.4.</span> Extensions</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Some of the welfare loss from mismatch is from <b>aggregate uncertainty</b>
 <ul>
